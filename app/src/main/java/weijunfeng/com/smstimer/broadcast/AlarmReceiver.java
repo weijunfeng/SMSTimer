@@ -9,6 +9,7 @@ import android.text.TextUtils;
 
 import java.util.Calendar;
 
+import weijunfeng.com.smstimer.task.ProperTask;
 import weijunfeng.com.smstimer.utils.NotificationId;
 import weijunfeng.com.smstimer.utils.SMSLog;
 import weijunfeng.com.smstimer.utils.SmsUtil;
@@ -81,7 +82,7 @@ public class AlarmReceiver extends BroadcastReceiver {
         switch (intent.getAction()) {
             case ACTION_7:
 //                SmsUtil.sendSMS("17006429278", "测试");
-                SmsUtil.sendSMS("15555481806", "主子，早安");
+                SmsUtil.sendSMS("15555481806", ProperTask.getLoveshi(context) + "早安。");
                 if (weekDay == Calendar.SUNDAY || weekDay == Calendar.SATURDAY) {
                     cancelAlarm(context, ACTION_18);
                 } else {
@@ -102,7 +103,7 @@ public class AlarmReceiver extends BroadcastReceiver {
                 break;
             case ACTION_22:
 //                SmsUtil.sendSMS("17006429278", "测试");
-                SmsUtil.sendSMS("15555481806", "女神，早点休息");
+                SmsUtil.sendSMS("15555481806", ProperTask.getLoveError(context) + "记得早点休息。");
                 break;
             default:
                 break;

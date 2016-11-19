@@ -16,6 +16,8 @@ import java.util.Set;
 import java.util.TreeMap;
 
 import weijunfeng.com.smstimer.R;
+import weijunfeng.com.smstimer.task.ProperTask;
+import weijunfeng.com.smstimer.utils.SMSLog;
 import weijunfeng.com.smstimer.utils.SPUtil;
 
 /**
@@ -42,6 +44,8 @@ public class MainActivityFragment extends Fragment {
         loadData();
         listener = new Listener(this);
         SPUtil.setListener(listener);
+//        SMSLog.d(ProperTask.getLoveError(getActivity()));
+//        SMSLog.d(ProperTask.getLoveOk(getActivity()));
     }
 
     private void loadData() {
