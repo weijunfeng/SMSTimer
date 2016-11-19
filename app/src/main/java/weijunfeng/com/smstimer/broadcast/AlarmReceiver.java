@@ -76,12 +76,12 @@ public class AlarmReceiver extends BroadcastReceiver {
             return;
         }
         SMSLog.i(intent.getAction());
+        Calendar calendar = Calendar.getInstance();
+        int weekDay = calendar.get(Calendar.DAY_OF_WEEK);
         switch (intent.getAction()) {
             case ACTION_7:
 //                SmsUtil.sendSMS("17006429278", "测试");
                 SmsUtil.sendSMS("15555481806", "主子，早安");
-                Calendar calendar = Calendar.getInstance();
-                int weekDay = calendar.get(Calendar.DAY_OF_WEEK);
                 if (weekDay == Calendar.SUNDAY || weekDay == Calendar.SATURDAY) {
                     cancelAlarm(context, ACTION_18);
                 } else {
@@ -90,7 +90,11 @@ public class AlarmReceiver extends BroadcastReceiver {
                 break;
             case ACTION_12:
 //                SmsUtil.sendSMS("17006429278", "测试");
-                SmsUtil.sendSMS("15555481806", "记得多吃点");
+                if (weekDay == Calendar.SUNDAY || weekDay == Calendar.SATURDAY) {
+                    SmsUtil.sendSMS("15555481806", "该起床吃饭啦");
+                } else {
+                    SmsUtil.sendSMS("15555481806", "记得多吃点");
+                }
                 break;
             case ACTION_18:
 //                SmsUtil.sendSMS("17006429278", "测试");

@@ -10,8 +10,10 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import java.lang.ref.WeakReference;
+import java.util.Comparator;
 import java.util.Map;
 import java.util.Set;
+import java.util.TreeMap;
 
 import weijunfeng.com.smstimer.R;
 import weijunfeng.com.smstimer.utils.SPUtil;
@@ -44,12 +46,16 @@ public class MainActivityFragment extends Fragment {
 
     private void loadData() {
         SharedPreferences sp = SPUtil.getSp();
-        Map<String, String> all = (Map<String, String>) sp.getAll();
-        if (all != null) {
-            Set<Map.Entry<String, String>> entries = all.entrySet();
-            for (Map.Entry<String, String> entry : entries) {
-                textView.append(entry.getKey() + "-----" + entry.getValue() + "\n");
+        Map<String, String> all = new TreeMap<>(new Comparator<String>() {
+            @Override
+            public int compare(String lhs, String rhs) {
+                return lhs.compareTo(rhs);
             }
+        });
+        all.putAll((Map<? extends String, ? extends String>) sp.getAll());
+        Set<Map.Entry<String, String>> entries = all.entrySet();
+        for (Map.Entry<String, String> entry : entries) {
+            textView.append(entry.getKey() + "-----" + entry.getValue() + "\n");
         }
     }
 
