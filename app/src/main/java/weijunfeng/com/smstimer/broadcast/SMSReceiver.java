@@ -44,12 +44,17 @@ public class SMSReceiver extends BroadcastReceiver {
                 }
                 break;
             case DELIVERED_SMS_ACTION:
-                SMSLog.i("收信人已经成功接收:" + getResultCode());
+                if (getResultCode() == Activity.RESULT_OK) {
+                    SMSLog.i("收信人已经成功接收:" + getResultCode());
+                    SPUtil.setStringValue(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()), "收信成功");
+                } else {
+                    SMSLog.i("收信人接收失败:" + getResultCode());
+                    SPUtil.setStringValue(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()), "收信失败");
+                }
 //                Calendar calendar = Calendar.getInstance();
 //                calendar.get(Calendar.YEAR);
 //                calendar.get(Calendar.MONTH);
 //                calendar.get(Calendar.DAY_OF_MONTH);
-                SPUtil.setStringValue(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()), "收信成功");
                 break;
             default:
                 break;

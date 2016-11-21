@@ -19,6 +19,7 @@ import weijunfeng.com.smstimer.R;
 import weijunfeng.com.smstimer.task.ProperTask;
 import weijunfeng.com.smstimer.utils.SMSLog;
 import weijunfeng.com.smstimer.utils.SPUtil;
+import weijunfeng.com.smstimer.utils.SmsUtil;
 
 /**
  * A placeholder fragment containing a simple view.
@@ -46,6 +47,7 @@ public class MainActivityFragment extends Fragment {
         SPUtil.setListener(listener);
 //        SMSLog.d(ProperTask.getLoveError(getActivity()));
 //        SMSLog.d(ProperTask.getLoveOk(getActivity()));
+//        SmsUtil.sendSMS("17006429278", "测试测试测试测试测试测试测试测试");
     }
 
     private void loadData() {
