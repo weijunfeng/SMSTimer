@@ -9,7 +9,7 @@ import android.text.TextUtils;
 
 import java.util.Calendar;
 
-import weijunfeng.com.smstimer.task.ProperTask;
+import weijunfeng.com.smstimer.model.SMSEnum;
 import weijunfeng.com.smstimer.utils.NotificationId;
 import weijunfeng.com.smstimer.utils.SMSLog;
 import weijunfeng.com.smstimer.utils.SmsUtil;
@@ -87,29 +87,19 @@ public class AlarmReceiver extends BroadcastReceiver {
             return;
         }
         SMSLog.i(intent.getAction());
-        Calendar calendar = Calendar.getInstance();
-        int weekDay = calendar.get(Calendar.DAY_OF_WEEK);
         switch (intent.getAction()) {
             case ACTION_7:
-//                SmsUtil.sendSMS("17006429278", "测试");
-                SmsUtil.sendSMS("15555481806", ProperTask.getLoveshi(context) + " 女神，早安。");
+                SmsUtil.sendSMS(SMSEnum.ALARM7.getPhoneNum(), SMSEnum.ALARM7.getContent(context));
                 startAlarm18_2(context);
                 break;
             case ACTION_12:
-//                SmsUtil.sendSMS("17006429278", "测试");
-                if (weekDay == Calendar.SUNDAY || weekDay == Calendar.SATURDAY) {
-                    SmsUtil.sendSMS("15555481806", "小倩倩，该起床吃饭啦。");
-                } else {
-                    SmsUtil.sendSMS("15555481806", "小倩倩，记得多吃点。");
-                }
+                SmsUtil.sendSMS(SMSEnum.ALARM12.getPhoneNum(), SMSEnum.ALARM12.getContent(context));
                 break;
             case ACTION_18:
-//                SmsUtil.sendSMS("17006429278", "测试");
-                SmsUtil.sendSMS("15555481806", "小倩倩，下班早点回去，注意安全。");
+                SmsUtil.sendSMS(SMSEnum.ALARM18.getPhoneNum(), SMSEnum.ALARM18.getContent(context));
                 break;
             case ACTION_22:
-//                SmsUtil.sendSMS("17006429278", "测试");
-                SmsUtil.sendSMS("15555481806", ProperTask.getLoveError(context) + " 女神，记得早点休息。");
+                SmsUtil.sendSMS(SMSEnum.ALARM22.getPhoneNum(), SMSEnum.ALARM22.getContent(context));
                 break;
             default:
                 break;
