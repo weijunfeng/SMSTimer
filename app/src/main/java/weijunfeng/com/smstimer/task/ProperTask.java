@@ -15,9 +15,11 @@ public class ProperTask {
     public static final String LOVE_ERROR = "love_error_2016.properties";
     public static final String LOVE_Ok = "love_ok_2016.properties";
     public static final String LOVE_SHI = "love_shi_2016.properties";
+    public static final String LOVE_XIAOHUA = "love_xiaohua_2016.properties";
     public static final int[] LOVE_ERROR_START = {2016, 11, 19};
     public static final int[] LOVE_OK_START = {2016, 11, 20};
     public static final int[] LOVE_SHI_START = {2016, 11, 20};
+    public static final int[] LOVE_XIAOHUA_START = {2016, 11, 21};
 
 
     public static String getLoveError(Context context) {
@@ -42,6 +44,14 @@ public class ProperTask {
             return "";
         }
         return FileUtil.getProper(LOVE_SHI, context, String.valueOf(properKey));
+    }
+
+    public static String getXiaoHua(Context context) {
+        int properKey = getProperKey(LOVE_XIAOHUA_START);
+        if (properKey <= -1) {
+            return "";
+        }
+        return FileUtil.getProper(LOVE_XIAOHUA, context, String.valueOf(properKey));
     }
 
     private static int getProperKey(int[] start) {

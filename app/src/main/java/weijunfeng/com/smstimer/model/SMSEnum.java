@@ -28,7 +28,8 @@ public enum SMSEnum {
     ALARM7("15555481806") {
         @Override
         public String getContent(Context context) {
-            return ProperTask.getLoveshi(context) + " 小倩倩，早安。";
+//            return ProperTask.getLoveshi(context) + " 小妹妹，早安。";
+            return " 小妹妹，大哥哥来问安啦。";
         }
     },
     ALARM12("15555481806") {
@@ -38,9 +39,9 @@ public enum SMSEnum {
             int weekDay = calendar.get(Calendar.DAY_OF_WEEK);
             String message;
             if (weekDay == Calendar.SUNDAY || weekDay == Calendar.SATURDAY) {
-                message = "小倩倩，该起床吃饭啦。";
+                message = " 小妹妹，该起床吃饭啦。";
             } else {
-                message = "小倩倩，记得多吃点。";
+                message = " 小妹妹，记得多吃点。";
             }
             if (TextUtils.isEmpty(customStr)) {
                 return message;
@@ -54,13 +55,14 @@ public enum SMSEnum {
     ALARM18("15555481806") {
         @Override
         public String getContent(Context context) {
-            return "小倩倩，下班早点回去，注意安全。";
+            return ProperTask.getXiaoHua(context) + " 小妹妹，下班早点回去，注意安全。";
         }
     },
     ALARM22("15555481806") {
         @Override
         public String getContent(Context context) {
-            return ProperTask.getLoveError(context) + " 小倩倩，记得早点休息。";
+//            return ProperTask.getLoveError(context) + " 小妹妹，别玩太晚记得早点休息。";
+            return " 小妹妹，别玩太晚记得早点休息。";
         }
     };
 
