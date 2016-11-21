@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.telephony.PhoneNumberUtils;
 
-import java.util.List;
+import java.util.ArrayList;
 
 import weijunfeng.com.smstimer.base.SmsTimerApp;
 import weijunfeng.com.smstimer.broadcast.SMSReceiver;
@@ -29,10 +29,24 @@ public class SmsUtil {
         //获取短信管理器
         android.telephony.SmsManager smsManager = android.telephony.SmsManager.getDefault();
         //拆分短信内容（手机短信长度限制）
-        List<String> divideContents = smsManager.divideMessage(message);
+        ArrayList<String> divideContents = smsManager.divideMessage(message);
+//        for (String text : divideContents) {
+//            smsManager.sendTextMessage(phoneNumber, null, text, getSendPi(SmsTimerApp.context), getDeliverPi(SmsTimerApp.context));
+//        }
+        ArrayList<PendingIntent> sendPi = new ArrayList<>();
+        ArrayList<PendingIntent> deliverPi = new ArrayList<>();
         for (String text : divideContents) {
-            smsManager.sendTextMessage(phoneNumber, null, text, getSendPi(SmsTimerApp.context), getDeliverPi(SmsTimerApp.context));
+            sendPi.add(getSendPi(SmsTimerApp.context));
+            deliverPi.add(getDeliverPi(SmsTimerApp.context));
         }
+        /**
+         * destinationAddress：目标电话号码
+         -- scAddress：短信中心号码，测试可以不填
+         -- text: 短信内容
+         -- sentIntent：发送 -->中国移动 --> 中国移动发送失败 --> 返回发送成功或失败信号 --> 后续处理   即，这个意图包装了短信发送状态的信息
+         -- deliveryIntent： 发送 -->中国移动 --> 中国移动发送成功 --> 返回对方是否收到这个信息 --> 后续处理  即：这个意图包装了短信是否被对方收到的状态信息（供应商已经发送成功，但是对方没有收到）。
+         */
+        smsManager.sendMultipartTextMessage(phoneNumber, null, divideContents, sendPi, deliverPi);
     }
 
     private static PendingIntent getSendPi(final Context context) {

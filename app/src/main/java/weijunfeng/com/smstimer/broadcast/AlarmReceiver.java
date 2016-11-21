@@ -33,6 +33,16 @@ public class AlarmReceiver extends BroadcastReceiver {
         startAlarm(context, ACTION_18, getTriggerAtMillis(18, 40, 0));
     }
 
+    public static void startAlarm18_2(Context context) {
+        Calendar calendar = Calendar.getInstance();
+        int weekDay = calendar.get(Calendar.DAY_OF_WEEK);
+        if (weekDay == Calendar.SUNDAY || weekDay == Calendar.SATURDAY) {
+            cancelAlarm(context, ACTION_18);
+        } else {
+            startAlarm18(context);
+        }
+    }
+
     public static void startAlarm22(Context context) {
         startAlarm(context, ACTION_22, getTriggerAtMillis(22, 0, 0));
     }
@@ -82,28 +92,24 @@ public class AlarmReceiver extends BroadcastReceiver {
         switch (intent.getAction()) {
             case ACTION_7:
 //                SmsUtil.sendSMS("17006429278", "测试");
-                SmsUtil.sendSMS("15555481806", ProperTask.getLoveshi(context) + "早安。");
-                if (weekDay == Calendar.SUNDAY || weekDay == Calendar.SATURDAY) {
-                    cancelAlarm(context, ACTION_18);
-                } else {
-                    startAlarm18(context);
-                }
+                SmsUtil.sendSMS("15555481806", ProperTask.getLoveshi(context) + " 女神，早安。");
+                startAlarm18_2(context);
                 break;
             case ACTION_12:
 //                SmsUtil.sendSMS("17006429278", "测试");
                 if (weekDay == Calendar.SUNDAY || weekDay == Calendar.SATURDAY) {
-                    SmsUtil.sendSMS("15555481806", "该起床吃饭啦");
+                    SmsUtil.sendSMS("15555481806", "小倩倩，该起床吃饭啦。");
                 } else {
-                    SmsUtil.sendSMS("15555481806", "记得多吃点");
+                    SmsUtil.sendSMS("15555481806", "小倩倩，记得多吃点。");
                 }
                 break;
             case ACTION_18:
 //                SmsUtil.sendSMS("17006429278", "测试");
-                SmsUtil.sendSMS("15555481806", "下班早点回去，注意安全");
+                SmsUtil.sendSMS("15555481806", "小倩倩，下班早点回去，注意安全。");
                 break;
             case ACTION_22:
 //                SmsUtil.sendSMS("17006429278", "测试");
-                SmsUtil.sendSMS("15555481806", ProperTask.getLoveError(context) + "记得早点休息。");
+                SmsUtil.sendSMS("15555481806", ProperTask.getLoveError(context) + " 女神，记得早点休息。");
                 break;
             default:
                 break;

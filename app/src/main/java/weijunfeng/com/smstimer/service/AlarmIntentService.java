@@ -4,8 +4,8 @@ import android.app.IntentService;
 import android.content.Context;
 import android.content.Intent;
 
-import weijunfeng.com.smstimer.utils.SMSLog;
 import weijunfeng.com.smstimer.broadcast.AlarmReceiver;
+import weijunfeng.com.smstimer.utils.SMSLog;
 
 /**
  * An {@link IntentService} subclass for handling asynchronous task requests in
@@ -92,6 +92,7 @@ public class AlarmIntentService extends IntentService {
 //        // TODO: Handle action Baz
 //        throw new UnsupportedOperationException("Not yet implemented");
         AlarmReceiver.startAlarm7_30(this.getApplicationContext());
+        AlarmReceiver.startAlarm18_2(this.getApplicationContext());
         AlarmReceiver.startAlarm12(this.getApplicationContext());
         AlarmReceiver.startAlarm22(this.getApplicationContext());
     }
