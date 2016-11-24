@@ -22,7 +22,7 @@ public class AlarmReceiver extends BroadcastReceiver {
     public static final long INTERVALMILLIS = 24 * 60 * 60 * 1000;
 
     public static void startAlarm7_30(Context context) {
-        startAlarm(context, ACTION_7, getTriggerAtMillis(7, 30, 0));
+        startAlarm(context, ACTION_7, getTriggerAtMillis(6, 40, 0));
     }
 
     public static void startAlarm12(Context context) {
@@ -30,7 +30,7 @@ public class AlarmReceiver extends BroadcastReceiver {
     }
 
     public static void startAlarm18(Context context) {
-        startAlarm(context, ACTION_18, getTriggerAtMillis(18, 40, 0));
+        startAlarm(context, ACTION_18, getTriggerAtMillis(17, 50, 0));
     }
 
     public static void startAlarm18_2(Context context) {
