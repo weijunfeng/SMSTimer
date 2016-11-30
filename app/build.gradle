@@ -34,5 +34,6 @@ dependencies {
     testCompile 'junit:junit:4.12'
     debugCompile(name: 'leakcanary-android-1.5', ext: 'aar')
     releaseCompile(name: 'leakcanary-android-no-op-1.5', ext: 'aar')
-
+    compile 'com.jakewharton:butterknife:8.4.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
 }

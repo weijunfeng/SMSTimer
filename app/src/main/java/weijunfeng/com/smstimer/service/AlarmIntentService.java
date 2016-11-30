@@ -95,5 +95,6 @@ public class AlarmIntentService extends IntentService {
         AlarmReceiver.startAlarm18_2(this.getApplicationContext());
         AlarmReceiver.startAlarm12(this.getApplicationContext());
         AlarmReceiver.startAlarm22(this.getApplicationContext());
+//        AlarmReceiver.startAlarmTest(this.getApplicationContext());
     }
 }

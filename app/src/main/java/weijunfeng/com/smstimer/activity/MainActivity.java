@@ -14,6 +14,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 import weijunfeng.com.smstimer.R;
 import weijunfeng.com.smstimer.model.SMSEnum;
 import weijunfeng.com.smstimer.utils.SMSLog;
@@ -24,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ButterKnife.bind(this);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -47,6 +50,10 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
+//    @OnClick(R.id.fab)
+//    public void click(){
+//
+//    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

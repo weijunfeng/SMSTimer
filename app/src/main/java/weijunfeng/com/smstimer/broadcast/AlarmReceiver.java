@@ -12,6 +12,7 @@ import java.util.Calendar;
 import weijunfeng.com.smstimer.model.SMSEnum;
 import weijunfeng.com.smstimer.utils.NotificationId;
 import weijunfeng.com.smstimer.utils.SMSLog;
+import weijunfeng.com.smstimer.utils.SPUtil;
 import weijunfeng.com.smstimer.utils.SmsUtil;
 
 public class AlarmReceiver extends BroadcastReceiver {
@@ -19,14 +20,18 @@ public class AlarmReceiver extends BroadcastReceiver {
     public static final String ACTION_12 = "weijunfeng.com.smstimer_12";
     public static final String ACTION_18 = "weijunfeng.com.smstimer_18";
     public static final String ACTION_22 = "weijunfeng.com.smstimer_22";
+    public static final String ACTION_TEST = "weijunfeng.com.smstimer_test";
     public static final long INTERVALMILLIS = 24 * 60 * 60 * 1000;
 
+    public static void startAlarmTest(Context context) {
+        startAlarm(context, ACTION_TEST, getTriggerAtMillis(15, 27, 0));
+    }
     public static void startAlarm7_30(Context context) {
         startAlarm(context, ACTION_7, getTriggerAtMillis(6, 40, 0));
     }
 
     public static void startAlarm12(Context context) {
-        startAlarm(context, ACTION_12, getTriggerAtMillis(12, 0, 0));
+        startAlarm(context, ACTION_12, getTriggerAtMillis(11, 50, 0));
     }
 
     public static void startAlarm18(Context context) {
@@ -87,6 +92,10 @@ public class AlarmReceiver extends BroadcastReceiver {
             return;
         }
         SMSLog.i(intent.getAction());
+        if (SPUtil.getStringValue(SPUtil.ALARM_ACTION).equals(intent.getAction())) {
+            return;
+        }
+        SPUtil.setStringValue(SPUtil.ALARM_ACTION, intent.getAction());
         switch (intent.getAction()) {
             case ACTION_7:
                 SmsUtil.sendSMS(SMSEnum.ALARM7.getPhoneNum(), SMSEnum.ALARM7.getContent(context));
@@ -100,6 +109,9 @@ public class AlarmReceiver extends BroadcastReceiver {
                 break;
             case ACTION_22:
                 SmsUtil.sendSMS(SMSEnum.ALARM22.getPhoneNum(), SMSEnum.ALARM22.getContent(context));
+                break;
+            case ACTION_TEST:
+                SmsUtil.sendSMS(SMSEnum.ALARMTEST.getPhoneNum(), SMSEnum.ALARMTEST.getContent(context));
                 break;
             default:
                 break;

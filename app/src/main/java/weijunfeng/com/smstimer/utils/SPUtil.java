@@ -11,6 +11,7 @@ import weijunfeng.com.smstimer.base.SmsTimerApp;
 
 public class SPUtil {
     public static final String SP_FILE_NAME = "sms_send";
+    public static final String ALARM_ACTION = "alarm_action";
 
     public static SharedPreferences getSp() {
         return SmsTimerApp.context.getSharedPreferences(SP_FILE_NAME, Context.MODE_PRIVATE);
@@ -30,5 +31,8 @@ public class SPUtil {
 
     public static void setStringValue(String key, String value) {
         getEditor().putString(key, value).commit();
+    }
+    public static String getStringValue(String key) {
+        return getSp().getString(key,"");
     }
 }

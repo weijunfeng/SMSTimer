@@ -61,6 +61,9 @@ public class MainActivityFragment extends Fragment {
         all.putAll((Map<? extends String, ? extends String>) sp.getAll());
         Set<Map.Entry<String, String>> entries = all.entrySet();
         for (Map.Entry<String, String> entry : entries) {
+            if (entry.getKey().equals(SPUtil.ALARM_ACTION)) {
+                continue;
+            }
             textView.append(entry.getKey() + "-----" + entry.getValue() + "\n");
         }
     }
@@ -80,6 +83,9 @@ public class MainActivityFragment extends Fragment {
 
         @Override
         public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+            if (key.equals(SPUtil.ALARM_ACTION)) {
+                return;
+            }
             MainActivityFragment mainActivityFragment = weakReference.get();
             if (mainActivityFragment == null || mainActivityFragment.isRemoving() || mainActivityFragment.isDetached()) {
                 return;
