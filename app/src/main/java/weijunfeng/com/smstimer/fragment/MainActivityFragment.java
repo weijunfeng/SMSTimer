@@ -11,7 +11,9 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import java.lang.ref.WeakReference;
+import java.text.SimpleDateFormat;
 import java.util.Comparator;
+import java.util.Date;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
@@ -41,6 +43,8 @@ public class MainActivityFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         textView = (TextView) view.findViewById(R.id.text);
         textView.setMovementMethod(ScrollingMovementMethod.getInstance());
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        ((TextView) view.findViewById(R.id.boot_time)).setText("启动时间:" + simpleDateFormat.format(new Date()));
         loadData();
         listener = new Listener(this);
         SPUtil.setListener(listener);

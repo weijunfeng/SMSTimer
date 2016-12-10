@@ -8,6 +8,13 @@
     android:orientation="vertical"
     tools:context="weijunfeng.com.smstimer.fragment.MainActivityFragment">
 
+    <TextView
+        android:id="@+id/boot_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="2dp"
+        android:layout_marginTop="5dp"
+        android:gravity="center" />
     <EditText
         android:id="@+id/edit_text"
         android:layout_width="300dp"
