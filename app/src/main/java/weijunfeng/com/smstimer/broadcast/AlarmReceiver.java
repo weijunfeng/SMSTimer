@@ -27,25 +27,25 @@ public class AlarmReceiver extends BroadcastReceiver {
         startAlarm(context, ACTION_TEST, getTriggerAtMillis(15, 27, 0));
     }
     public static void startAlarm7_30(Context context) {
-        startAlarm(context, ACTION_7, getTriggerAtMillis(6, 40, 0));
+        startAlarm(context, ACTION_7, getTriggerAtMillis(6, 50, 0));
     }
 
     public static void startAlarm12(Context context) {
-        startAlarm(context, ACTION_12, getTriggerAtMillis(11, 50, 0));
+//        startAlarm(context, ACTION_12, getTriggerAtMillis(11, 50, 0));
     }
 
     public static void startAlarm18(Context context) {
-        startAlarm(context, ACTION_18, getTriggerAtMillis(17, 50, 0));
+//        startAlarm(context, ACTION_18, getTriggerAtMillis(17, 50, 0));
     }
 
     public static void startAlarm18_2(Context context) {
-        Calendar calendar = Calendar.getInstance();
-        int weekDay = calendar.get(Calendar.DAY_OF_WEEK);
-        if (weekDay == Calendar.SUNDAY || weekDay == Calendar.SATURDAY) {
-            cancelAlarm(context, ACTION_18);
-        } else {
-            startAlarm18(context);
-        }
+//        Calendar calendar = Calendar.getInstance();
+//        int weekDay = calendar.get(Calendar.DAY_OF_WEEK);
+//        if (weekDay == Calendar.SUNDAY || weekDay == Calendar.SATURDAY) {
+//            cancelAlarm(context, ACTION_18);
+//        } else {
+//            startAlarm18(context);
+//        }
     }
 
     public static void startAlarm22(Context context) {

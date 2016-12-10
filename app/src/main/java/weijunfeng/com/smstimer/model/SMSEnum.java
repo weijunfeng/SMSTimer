@@ -29,7 +29,8 @@ public enum SMSEnum {
         @Override
         public String getContent(Context context) {
 //            return ProperTask.getLoveshi(context) + " 小妹妹，早安。";
-            return ProperTask.getLoveError(context) + " 小妹妹，哥哥来问早安啦。";
+//            return ProperTask.getLoveError(context) + " 美好的一天从此刻开始,早安!";
+            return "美好的一天从此刻开始,早安!";
         }
     },
     ALARM12("15555481806") {
@@ -62,7 +63,7 @@ public enum SMSEnum {
         @Override
         public String getContent(Context context) {
 //            return ProperTask.getLoveError(context) + " 小妹妹，别玩太晚记得早点休息。";
-            return " 小妹妹，别玩太晚记得早点休息。";
+            return "美好的夜从此刻到来,晚安!";
         }
     };
 
